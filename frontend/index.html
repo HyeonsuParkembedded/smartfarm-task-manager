@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>스마트팜 Task 관리</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>🌱 스마트팜 Task 관리</h1>
+        <button id="newBtn" class="primary">+ 새 작업</button>
+    </header>
+
+    <nav id="houseTabs" class="tabs">
+        <button data-house="11" class="active">11번 하우스</button>
+        <button data-house="12">12번 하우스</button>
+        <button data-house="13">13번 하우스</button>
+    </nav>
+
+    <main>
+        <table>
+            <thead>
+                <tr><th>ID</th><th>작업</th><th>상태</th><th>우선순위</th><th>시간</th><th>날짜</th><th></th></tr>
+            </thead>
+            <tbody id="taskBody"></tbody>
+        </table>
+        <p id="empty" class="empty hidden">등록된 작업이 없습니다.</p>
+    </main>
+
+    <!-- 생성/수정 모달 -->
+    <div id="formModal" class="modal hidden">
+        <form id="taskForm" class="dialog">
+            <h2 id="formTitle">새 작업 등록</h2>
+            <label>제목 <input name="title" required maxlength="200"></label>
+            <label>설명 <textarea name="description" rows="3"></textarea></label>
+            <div class="row">
+                <label>상태
+                    <select name="status">
+                        <option value="pending">대기</option>
+                        <option value="in_progress">진행중</option>
+                        <option value="completed">완료</option>
+                        <option value="cancelled">취소</option>
+                    </select>
+                </label>
+                <label>우선순위
+                    <select name="priority">
+                        <option value="low">낮음</option>
+                        <option value="medium" selected>보통</option>
+                        <option value="high">높음</option>
+                        <option value="urgent">긴급</option>
+                    </select>
+                </label>
+            </div>
+            <div class="row">
+                <label>시작 <input name="start_time" type="time"></label>
+                <label>종료 <input name="end_time" type="time"></label>
+                <label>날짜 <input name="assigned_date" type="date"></label>
+            </div>
+            <div class="actions">
+                <button type="button" class="cancel">취소</button>
+                <button type="submit" class="primary">저장</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- 삭제 확인 모달 -->
+    <div id="deleteModal" class="modal hidden">
+        <div class="dialog small">
+            <h2>작업 삭제</h2>
+            <p id="deleteText"></p>
+            <div class="actions">
+                <button type="button" class="cancel">취소</button>
+                <button type="button" id="confirmDelete" class="danger">삭제</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="toast" class="toast"></div>
+    <script src="app.js"></script>
+</body>
+</html>

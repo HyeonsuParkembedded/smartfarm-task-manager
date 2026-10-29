@@ -1,0 +1,13 @@
+node_modules/
+.env
+
+# 편집기/플러그인 자동 생성 파일
+.claude-dev-helper/
+.plugin-config/
+.complexity-log.md
+.todos-report.md/
+.*-project-structure.md
+.session-summary.md
+
+# 스크린샷은 저장소에 올리지 않음
+*.png
